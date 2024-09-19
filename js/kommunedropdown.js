@@ -9,7 +9,9 @@ function unpackKommmune(kom) {
     console.log(kom);
     const el = document.createElement("option");
     el.textContent = kom.navn;
-    el.value = kom;
+    el.value = kom.kode;
+    el.kommune = kom;
+    console.log("kommune=" + kom);
     ddKommune.appendChild(el);
 }
 
@@ -21,8 +23,15 @@ function actionFetch() {
     //console.log(kommuner)
 }
 
+function selectKommuner(el) {
+    console.log(el);
+    const ix = ddKommune.selectedIndex;
+    const selkom = ddKommune.options[ix];
+    console.log(selkom.kommune);
+}
+
 pbFetchKommuner = document.getElementById("pbFetchKommuner")
 pbFetchKommuner.addEventListener('click', actionFetch)
 ddKommune = document.getElementById("ddKommuner")
-
+ddKommune.addEventListener("change", selectKommuner)
 
